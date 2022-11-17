@@ -9,6 +9,8 @@ export default function Home() {
       .then((json) => setCourseInfo(json));
   }, []);
 
+  const courseList = courseInfo;
+
   console.log("this is course info", courseInfo);
 
   return (
