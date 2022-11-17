@@ -1,4 +1,16 @@
+import { useEffect, useState } from "react";
+
 export default function Home() {
+  const [courseInfo, setCourseInfo] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/courses")
+      .then((response) => response.json())
+      .then((json) => setCourseInfo(json));
+  }, []);
+
+  console.log("this is course info", courseInfo);
+
   return (
     <div className="p-5">
       <div>
