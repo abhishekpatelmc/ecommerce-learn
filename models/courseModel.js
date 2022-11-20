@@ -8,6 +8,6 @@ const CourseSchema = new Schema({
   image: String,
 });
 
-const Course = models?.Course || model("Course", CourseSchema);
+const CourseModel = models?.Course || model("Course", CourseSchema);
 
-export default Course;
+export default CourseModel;
