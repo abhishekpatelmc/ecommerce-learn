@@ -15,6 +15,13 @@ export default function Home() {
   const courseCategoryNames = [...new Set(courseInfo.map((c) => c.category))];
   // console.log({ courseCategoryNames });
 
+  let courses;
+  if (phrase) {
+    courses = courseInfo.filter((a) => a.name.toLowerCase().includes(phrase));
+  } else {
+    courses = courseInfo;
+  }
+
   return (
     <div className="p-5">
       <input
@@ -27,21 +34,24 @@ export default function Home() {
       <div>
         {courseCategoryNames.map((categoryName) => (
           <div key={categoryName}>
-            <h2 className="text-2xl py-5 capitalize font-semibold ">
-              {categoryName}
-            </h2>
-            <div className="flex -mx-5 overflow-x-scroll snap-x scrollbar-hide">
-              {courseInfo
-                .filter((c) => c.category === categoryName)
-                .map((courseInfo) => (
-                  <div key={courseInfo._id} className="px-5 snap-start">
-                    <CourseTemplate {...courseInfo} />
-                  </div>
-                ))}
-            </div>
+            {courses.find((c) => c.category == categoryName) && (
+              <div>
+                <h2 className="text-2xl py-5 capitalize font-semibold ">
+                  {categoryName}
+                </h2>
+                <div className="flex -mx-5 overflow-x-scroll snap-x scrollbar-hide">
+                  {courses
+                    .filter((c) => c.category === categoryName)
+                    .map((courseInfo) => (
+                      <div key={courseInfo._id} className="px-5 snap-start">
+                        <CourseTemplate {...courseInfo} />
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )}
           </div>
         ))}
-        <div className="py-4"></div>
       </div>
     </div>
   );
