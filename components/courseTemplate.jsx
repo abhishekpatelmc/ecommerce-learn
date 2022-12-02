@@ -16,7 +16,7 @@ export default function CourseTemplate({
       <p className="text-sm mt-1 leading-4">{description}</p>
       <div className="flex mt-1">
         <div className="text-2xl font-bold grow">${price}</div>
-        <button className="bg-purple-500 text-white py-1 px-3 rounded-xl font-bold text-xl">
+        <button className="bg-slate-800 text-white pb-2 p-1 px-3 rounded-xl font-bold text-2xl">
           +
         </button>
       </div>
